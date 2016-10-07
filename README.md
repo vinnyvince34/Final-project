@@ -2,7 +2,7 @@
 
 Theme : Text-based RPG.
 
-Parts will be made:
+Parts will be made (Ascending hierarchy):
 1. Character creation
 2. Opening
 3. Battle system
@@ -10,3 +10,5 @@ Parts will be made:
 5. Random event system
 6. Death system
 7. Ending system
+
+*Hierarchy may change depending on the need.
