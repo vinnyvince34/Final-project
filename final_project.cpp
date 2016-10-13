@@ -23,6 +23,8 @@ class Player
 {
     public:
         string sPlayerName;
+		int nHealth = 0;
+		int nMana = 0;
         int nCurrency = 500;
         int nJob;
         int nRace;
@@ -54,57 +56,67 @@ void PlayerCreation ()
     else if (player.nRace == 1)
     {
         cout << player.sPlayerName << " the human." << endl;
+		player.nHealth += 100;
+		player.nMana += 50;
         player.nAttack += 5;
         player.nDefence += 5;
         player.nMagicAttack += 5;
         player.nMagicDefence += 5;
         player.nAgility += 5;
         player.nLuck += 5;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     else if (player.nRace == 2)
     {
         cout << player.sPlayerName << " the elf." << endl;
+		player.nHealth += 70;
+		player.nMana += 120;
         player.nAttack += 2;
         player.nDefence += 2;
         player.nMagicAttack += 8;
         player.nMagicDefence += 8;
         player.nAgility += 7;
         player.nLuck += 6;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     else if (player.nRace == 3)
     {
         cout << player.sPlayerName << " the dwarf." << endl;
+		player.nHealth += 120;
+		player.nMana += 40;
         player.nAttack += 7;
         player.nDefence += 5;
         player.nMagicAttack += 3;
         player.nMagicDefence += 2;
         player.nAgility += 4;
         player.nLuck += 8;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     else if (player.nRace == 4)
     {
         cout << player.sPlayerName << " the orc." << endl;
+		player.nHealth += 150;
+		player.nMana += 20;
         player.nAttack += 10;
         player.nDefence += 8;
         player.nMagicAttack += 1;
         player.nMagicDefence += 2;
         player.nAgility += 6;
         player.nLuck += 3;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     else
     {
         cout << player.sPlayerName << " the halfling." << endl;
+		player.nHealth += 50;
+		player.nMana += 80;
         player.nAttack += 6;
         player.nDefence += 3;
         player.nMagicAttack += 4;
         player.nMagicDefence += 6;
         player.nAgility += 10;
         player.nLuck += 7;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     cout << "What is your job?" << endl;
     cout << "1.Knight" << setw(10) << "2.Mage" << setw(15) << "3.Mechanic" << setw(10) << "4.Thief" << setw(10) << "5.Noble" << endl;
@@ -118,57 +130,67 @@ void PlayerCreation ()
     else if (player.nJob == 1)
     {
         cout << player.sPlayerName << " the knight." << endl;
+		player.nHealth += 50;
+		player.nMana += 10;
         player.nAttack += 3;
         player.nDefence += 3;
         player.nMagicAttack += 1;
         player.nMagicDefence += 1;
         player.nAgility -= 2;
         player.nLuck += 0;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     else if (player.nJob == 2)
     {
         cout << player.sPlayerName << " the mage." << endl;
+		player.nHealth += 10;
+		player.nMana += 50;
         player.nAttack -= 2;
         player.nDefence -= 2;
         player.nMagicAttack += 3;
         player.nMagicDefence += 3;
         player.nAgility += 0;
         player.nLuck += 2;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     else if (player.nJob == 3)
     {
         cout << player.sPlayerName << " the mechanic." << endl;
+		player.nHealth += 30;
+		player.nMana += 30;
         player.nAttack += 1;
         player.nDefence += 2;
         player.nMagicAttack += 1;
         player.nMagicDefence += 2;
         player.nAgility -= 3;
         player.nLuck -= 1;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     else if (player.nJob == 4)
     {
         cout << player.sPlayerName << " the thief." << endl;
+		player.nHealth += 10;
+		player.nMana += 40;
         player.nAttack += 2;
         player.nDefence -= 2;
         player.nMagicAttack += 1;
         player.nMagicDefence -= 3;
         player.nAgility += 3;
         player.nLuck += 3;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     else
     {
         cout << player.sPlayerName << " the noble." << endl;
+		player.nHealth += 25;
+		player.nMana += 40;
         player.nAttack += 1;
         player.nDefence += 1;
         player.nMagicAttack += 1;
         player.nMagicDefence += 1;
         player.nAgility -= 3;
         player.nLuck += 1;
-        cout << "Attack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
+        cout << "Health: " << player.nHealth << "\nMana: " << player.nMana << "\nAttack: " << player.nAttack << "\nDefence: " << player.nDefence << "\nMagicAttack: " << player.nMagicAttack << "\nMagicDefence: " << player.nMagicDefence << "\nAgility: " << player.nAgility << "\nLuck: " << player.nLuck << endl;
     }
     cout << "Good luck on your adventure," << player.sPlayerName << endl << endl;
     return;
