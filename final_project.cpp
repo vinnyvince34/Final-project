@@ -18,13 +18,14 @@
 
 using namespace std;
 
+//Initializing structure for the player
 
 class Player 
 {
     public:
         string sPlayerName;
-	int nHealth = 0;
-	int nMana = 0;
+		int nHealth = 0;
+		int nMana = 0;
         int nCurrency = 500;
         int nJob;
         int nRace;
@@ -37,6 +38,15 @@ class Player
         int nAgility = 0;
         int nLuck = 0;
 };
+
+//Function prototypes
+
+void PlayerCreation ();
+void StoryOpening ();
+void ChoiceOne ();
+void ChoiceTwo ();
+
+//Function to create the player
 
 void PlayerCreation ()
 {
@@ -56,8 +66,8 @@ void PlayerCreation ()
     else if (player.nRace == 1)
     {
         cout << player.sPlayerName << " the human." << endl;
-	player.nHealth += 100;
-	player.nMana += 50;
+		player.nHealth += 100;
+		player.nMana += 50;
         player.nAttack += 5;
         player.nDefence += 5;
         player.nMagicAttack += 5;
@@ -69,8 +79,8 @@ void PlayerCreation ()
     else if (player.nRace == 2)
     {
         cout << player.sPlayerName << " the elf." << endl;
-	player.nHealth += 70;
-	player.nMana += 120;
+		player.nHealth += 70;
+		player.nMana += 120;
         player.nAttack += 2;
         player.nDefence += 2;
         player.nMagicAttack += 8;
@@ -82,8 +92,8 @@ void PlayerCreation ()
     else if (player.nRace == 3)
     {
         cout << player.sPlayerName << " the dwarf." << endl;
-	player.nHealth += 120;
-	player.nMana += 40;
+		player.nHealth += 120;
+		player.nMana += 40;
         player.nAttack += 7;
         player.nDefence += 5;
         player.nMagicAttack += 3;
@@ -95,8 +105,8 @@ void PlayerCreation ()
     else if (player.nRace == 4)
     {
         cout << player.sPlayerName << " the orc." << endl;
-	player.nHealth += 150;
-	player.nMana += 20;
+		player.nHealth += 150;
+		player.nMana += 20;
         player.nAttack += 10;
         player.nDefence += 8;
         player.nMagicAttack += 1;
@@ -108,8 +118,8 @@ void PlayerCreation ()
     else
     {
         cout << player.sPlayerName << " the halfling." << endl;
-	player.nHealth += 50;
-	player.nMana += 80;
+		player.nHealth += 50;
+		player.nMana += 80;
         player.nAttack += 6;
         player.nDefence += 3;
         player.nMagicAttack += 4;
@@ -130,8 +140,8 @@ void PlayerCreation ()
     else if (player.nJob == 1)
     {
         cout << player.sPlayerName << " the knight." << endl;
-	player.nHealth += 50;
-	player.nMana += 10;
+		player.nHealth += 50;
+		player.nMana += 10;
         player.nAttack += 3;
         player.nDefence += 3;
         player.nMagicAttack += 1;
@@ -143,8 +153,8 @@ void PlayerCreation ()
     else if (player.nJob == 2)
     {
         cout << player.sPlayerName << " the mage." << endl;
-	player.nHealth += 10;
-	player.nMana += 50;
+		player.nHealth += 10;
+		player.nMana += 50;
         player.nAttack -= 2;
         player.nDefence -= 2;
         player.nMagicAttack += 3;
@@ -156,8 +166,8 @@ void PlayerCreation ()
     else if (player.nJob == 3)
     {
         cout << player.sPlayerName << " the mechanic." << endl;
-	player.nHealth += 30;
-	player.nMana += 30;
+		player.nHealth += 30;
+		player.nMana += 30;
         player.nAttack += 1;
         player.nDefence += 2;
         player.nMagicAttack += 1;
@@ -169,8 +179,8 @@ void PlayerCreation ()
     else if (player.nJob == 4)
     {
         cout << player.sPlayerName << " the thief." << endl;
-	player.nHealth += 10;
-	player.nMana += 40;
+		player.nHealth += 10;
+		player.nMana += 40;
         player.nAttack += 2;
         player.nDefence -= 2;
         player.nMagicAttack += 1;
@@ -182,8 +192,8 @@ void PlayerCreation ()
     else
     {
         cout << player.sPlayerName << " the noble." << endl;
-	player.nHealth += 25;
-	player.nMana += 40;
+		player.nHealth += 25;
+		player.nMana += 40;
         player.nAttack += 1;
         player.nDefence += 1;
         player.nMagicAttack += 1;
@@ -194,6 +204,43 @@ void PlayerCreation ()
     }
     cout << "Good luck on your adventure," << player.sPlayerName << endl << endl;
     return;
+}
+
+//Game part
+
+void StoryOpening ()
+{
+    cout << "Welcome to the Simple World, where you can explore the world and probably be what you want!" << endl;
+    cout << "To start off, let say you were enjoying a goblet of ale at a pub named, 'The Bannered Mare'." << endl;
+    cout << "You saw a bounty that will reward you handsomely." << endl;
+    cout << "What are you going to do?" << endl;
+    cout << "1. Take the bounty." << endl;
+    cout << "2. Leave the bounty." << endl;
+    cout << "Enter 1-2." << endl;
+    int nChoiceOne;
+    cin >> nChoiceOne;
+    if (nChoiceOne < 1 || nChoiceOne > 2)
+    {
+        for (int i = 0; i > 1 || i < 2; )
+        {
+            cout << "Choice not found." << endl;
+            cout << "You saw a bounty that will reward you handsomely." << endl;
+            cout << "What are you going to do?" << endl;
+            cout << "1. Take the bounty." << endl;
+            cout << "2. Leave the bounty." << endl;
+            cout << "Enter 1-2." << endl;
+            int nChoiceOne;
+            cin >> nChoiceOne;
+        }
+    }
+    else if (nChoiceOne == 1)
+    {
+        ChoiceOne ();
+    }
+    else
+    {
+        ChoiceTwo ();
+    }
 }
 
 void ChoiceTwo ()
@@ -226,41 +273,6 @@ void ChoiceOne ()
     {
         cout << "You took the bounty." << endl;
         cout << "Your first clue is to head out of the city's wall." << endl;
-    }
-    else
-    {
-        ChoiceTwo ();
-    }
-}
-
-void StoryOpening ()
-{
-    cout << "Welcome to the Simple World, where you can explore the world and probably be what you want!" << endl;
-    cout << "To start off, let say you were enjoying a goblet of ale at a pub named, 'The Bannered Mare'." << endl;
-    cout << "You saw a bounty that will reward you handsomely." << endl;
-    cout << "What are you going to do?" << endl;
-    cout << "1. Take the bounty." << endl;
-    cout << "2. Leave the bounty." << endl;
-    cout << "Enter 1-2." << endl;
-    int nChoiceOne;
-    cin >> nChoiceOne;
-    if (nChoiceOne < 1 || nChoiceOne > 2)
-    {
-        for (int i = 0; i > 1 || i < 2; )
-        {
-            cout << "Choice not found." << endl;
-            cout << "You saw a bounty that will reward you handsomely." << endl;
-            cout << "What are you going to do?" << endl;
-            cout << "1. Take the bounty." << endl;
-            cout << "2. Leave the bounty." << endl;
-            cout << "Enter 1-2." << endl;
-            int nChoiceOne;
-            cin >> nChoiceOne;
-        }
-    }
-    else if (nChoiceOne == 1)
-    {
-        ChoiceOne ();
     }
     else
     {
