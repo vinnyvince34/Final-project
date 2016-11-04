@@ -2,6 +2,9 @@
 
 Theme : Text-based RPG.
 
+Note: 
+In order to run it, please download the Final_project.cpp and its model and controller files.
+
 Parts will be made (Ascending hierarchy):
 1. Character creation
 2. Opening
