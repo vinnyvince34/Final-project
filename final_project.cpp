@@ -1,7 +1,3 @@
-/*Vincent Alexander Seliang
-*CS02
-*2001585562*/
-
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
