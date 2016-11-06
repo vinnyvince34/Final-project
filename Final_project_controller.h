@@ -26,7 +26,7 @@ int nPotion = 10;
 void Opening();
 int PlayerTurn(Player& ppTurn, Enemy& enemy, Weapon& weapon);
 int EnemyTurn(Enemy& peTurn, Player& player, Armor& armor);
-int SpecialMove(Player& ppTurn, Enemy& enemy, Weapon& weapon);
+int SpecialMove(Player& ppTurn, Enemy& enemy, Weapon& weapon, int weapon_num);
 void BattleSystem(Enemy& enemy, Player& player, Weapon& weapon, Armor& armor);
 void Story();
 void PlayerCreation();
@@ -109,6 +109,8 @@ void Opening()
 
 //Function to create the player
 
+int nEquipmentIndex;
+
 void PlayerCreation()
 {
 	cout << "Welcome to the your Simple Adventure!" << endl;
@@ -186,60 +188,65 @@ void PlayerCreation()
 	{
 		if (nPlaceJob == 1)
 		{
+			nEquipmentIndex = 0;
 			cout << player.GetName() << " the knight." << endl;
 			player.JobIncrementer(50, 10, 3, 3, 1, 1, -2, 2, aWeapon, 0, aArmor, 0);
 			weapon = aWeapon[0];
 			armor = aArmor[0];
-			string WeaponName = aWeapon[0].wGetName();
-			string ArmorName = aArmor[0].aGetName();
+			string WeaponName = aWeapon[nEquipmentIndex].wGetName();
+			string ArmorName = aArmor[nEquipmentIndex].aGetName();
 			cout << "Weapon: " << WeaponName << endl;
 			cout << "Armor: " << ArmorName << endl;
 			player.GetData();
 		}
 		else if (nPlaceJob == 2)
 		{
+			nEquipmentIndex = 3;
 			cout << player.GetName() << " the mage." << endl;
 			player.JobIncrementer(10, 50, 2, 2, 3, 3, 0, 2, aWeapon, 3, aArmor, 3);
 			weapon = aWeapon[3];
 			armor = aArmor[3];
-			string WeaponName = aWeapon[3].wGetName();
-			string ArmorName = aArmor[3].aGetName();
+			string WeaponName = aWeapon[nEquipmentIndex].wGetName();
+			string ArmorName = aArmor[nEquipmentIndex].aGetName();
 			cout << "Weapon: " << WeaponName << endl;
 			cout << "Armor: " << ArmorName << endl;
 			player.GetData();
 		}
 		else if (nPlaceJob == 3)
 		{
+			nEquipmentIndex = 6;
 			cout << player.GetName() << " the mechanic." << endl;
 			player.JobIncrementer(30, 30, 1, 2, 1, 2, -3, -1, aWeapon, 6, aArmor, 6);
 			weapon = aWeapon[6];
 			armor = aArmor[6];
-			string WeaponName = aWeapon[6].wGetName();
-			string ArmorName = aArmor[6].aGetName();
+			string WeaponName = aWeapon[nEquipmentIndex].wGetName();
+			string ArmorName = aArmor[nEquipmentIndex].aGetName();
 			cout << "Weapon: " << WeaponName << endl;
 			cout << "Armor: " << ArmorName << endl;
 			player.GetData();
 		}
 		else if (nPlaceJob == 4)
 		{
+			nEquipmentIndex = 9;
 			cout << player.GetName() << " the thief." << endl;
 			player.JobIncrementer(10, 40, 2, -2, 1, -3, 3, 3, aWeapon, 9, aArmor, 9);
 			weapon = aWeapon[9];
 			armor = aArmor[9];
-			string WeaponName = aWeapon[9].wGetName();
-			string ArmorName = aArmor[9].aGetName();
+			string WeaponName = aWeapon[nEquipmentIndex].wGetName();
+			string ArmorName = aArmor[nEquipmentIndex].aGetName();
 			cout << "Weapon: " << WeaponName << endl;
 			cout << "Armor: " << ArmorName << endl;
 			player.GetData();
 		}
 		else
 		{
+			nEquipmentIndex = 12;
 			cout << player.GetName() << " the noble." << endl;
 			player.JobIncrementer(25, 40, 1, 1, 1, 1, -1, 5, aWeapon, 12, aArmor, 12);
 			weapon = aWeapon[12];
 			armor = aArmor[12];
-			string WeaponName = aWeapon[12].wGetName();
-			string ArmorName = aArmor[12].aGetName();
+			string WeaponName = aWeapon[nEquipmentIndex].wGetName();
+			string ArmorName = aArmor[nEquipmentIndex].aGetName();
 			cout << "Weapon: " << WeaponName << endl;
 			cout << "Armor: " << ArmorName << endl;
 			player.GetData();
@@ -273,7 +280,7 @@ int PlayerTurn(Player& ppTurn, Enemy& enemy, Weapon& weapon)
 	string seName = enemy.eGetName();
 	if (npRandom > 3)
 	{
-		npDamage = ((ppTurn.GetAttack()) + (weapon.wGetAttack()) - (enemy.eGetDefence())) * npRandomDamage;
+		npDamage = ((ppTurn.GetAttack() + 3) + (weapon.wGetAttack()) - (enemy.eGetDefence())) * npRandomDamage;
 		if (npDamage < 0)
 		{
 			npDamage = 1;
@@ -313,19 +320,18 @@ int EnemyTurn(Enemy& peTurn, Player& player, Armor& armor)
 	return neDamage;
 }
 
-int SpecialMove(Player& player, Enemy& enemy, Weapon& weapon)
+int SpecialMove(Player& player, Enemy& enemy, Weapon& weapon, int weapon_num)
 {
 	srand(time(NULL));
 	int npRandom = rand() % 10 + 1;
 	int npRandomDamage = rand() % 3 + 1;
 	int npSpecial;
-	int npJob = player.GetAJob();
+	int npWeaponIndex = weapon_num;
 	string seName = enemy.eGetName();
 	string spName = player.GetName();
-	switch (npJob)
+	if (weapon_num >= 0 || weapon_num <= 2)
 	{
-	case 1:
-		cout << "You swing your weapon with high power!" << endl;
+		cout << "You swing your sword with high power!" << endl;
 		if (npRandom > 3)
 		{
 			npSpecial = ((((player.GetAttack() + 5) + (weapon.wGetAttack())) - ((enemy.eGetDefence()) / 2))) * npRandomDamage * 2;
@@ -333,24 +339,66 @@ int SpecialMove(Player& player, Enemy& enemy, Weapon& weapon)
 		}
 		else
 		{
-			cout << spName << " successfully dodge the attack!" << endl;
+			cout << seName << " successfully dodge the attack!" << endl;
 			npSpecial = 0;
 		}
-		break;
-	case 2:
+	}
+	else if (weapon_num >= 3 || weapon_num <= 5)
+	{
 		cout << "You cast a burning magical spell!" << endl;
 		if (npRandom > 3)
 		{
-			npSpecial = ((player.GetAttack() + 2) - ((enemy.eGetDefence()) / 3)) * npRandomDamage;
+			npSpecial = (((player.GetMagicAttack() * 2) * (weapon.wGetMagicAttack())) - ((enemy.eGetMagicDefence()) / 3)) * npRandomDamage;
 			cout << seName << " suffers " << npSpecial << " damage points." << endl;
 		}
 		else
 		{
-			cout << spName << " successfully dodge the attack!" << endl;
+			cout << seName << " successfully dodge the attack!" << endl;
 			npSpecial = 0;
 		}
 	}
-
+	else if (weapon_num >= 6 || weapon_num <= 8)
+	{
+		cout << "You fire you gun with high concentration!" << endl;
+		if (npRandom > 3)
+		{
+			npSpecial = (((player.GetAttack() + 5) + (weapon.wGetAttack()) + (player.GetLuck() / 2)) - ((enemy.eGetDefence()) / 4)) * npRandomDamage;
+			cout << seName << " suffers " << npSpecial << " damage points." << endl;
+		}
+		else
+		{
+			cout << seName << " successfully dodge the attack!" << endl;
+			npSpecial = 0;
+		}
+	}
+	else if (weapon_num >= 9 || weapon_num <= 11)
+	{
+		cout << "You charge towards your target with full speed!" << endl;
+		if (npRandom > 3)
+		{
+			npSpecial = (((player.GetAttack()) + (weapon.wGetAttack()) + (player.GetLuck() / 2) + (player.GetAgility())) - ((enemy.eGetDefence()) / 4)) * npRandomDamage;
+			cout << seName << " suffers " << npSpecial << " damage points." << endl;
+		}
+		else
+		{
+			cout << seName << " successfully dodge the attack!" << endl;
+			npSpecial = 0;
+		}
+	}
+	else
+	{
+		cout << "You swing your whip with full power" << endl;
+		if (npRandom > 3)
+		{
+			npSpecial = (((player.GetAttack() / 2) + (weapon.wGetMagicAttack()) + (weapon.wGetAttack()) + (player.GetLuck() / 2)) - ((enemy.eGetDefence()) / 4)) * npRandomDamage;
+			cout << seName << " suffers " << npSpecial << " damage points." << endl;
+		}
+		else
+		{
+			cout << seName << " successfully dodge the attack!" << endl;
+			npSpecial = 0;
+		}
+	}
 	return npSpecial;
 }
 
@@ -390,7 +438,7 @@ void BattleSystem(Enemy& enemy, Player& player, Weapon& weapon, Armor& armor)
 		cout << "  2. Talk" << endl;
 		cout << "  3. Use potion" << endl;
 		cout << "  4. Use skill" << endl;
-		cout << "  4. Escape" << endl;
+		cout << "  5. Escape" << endl;
 		int nChoice;
 		cin >> nChoice;
 		switch (nChoice)
@@ -438,35 +486,25 @@ void BattleSystem(Enemy& enemy, Player& player, Weapon& weapon, Armor& armor)
 			}
 			break;
 		case 4:
-			if (player.GetAJob() == 1)
+			if (bpMana >= 15)
 			{
 				if (bpAgility >= beAgility)
 				{
-					if (bpMana > 0)
-					{
-						bpMana -= 10;
-					}
-					else
-					{
-						cout << "You don't have enough mana!" << endl;
-					}
+					beHealth -= SpecialMove(player, enemy, aWeapon[nEquipmentIndex], nEquipmentIndex);
 					bpHealth -= EnemyTurn(enemy, player, armor);
 				}
 				else
 				{
 					bpHealth -= EnemyTurn(enemy, player, armor);
-					if (bpMana > 0)
-					{
-
-						bpMana -= 10;
-					}
-					else
-					{
-						cout << "You don't have enough mana!" << endl;
-					}
+					beHealth -= SpecialMove(player, enemy, aWeapon[nEquipmentIndex], nEquipmentIndex);
 				}
+				bpMana -= 15;
 			}
-
+			else
+			{
+				cout << "You don't have enough mana to perform special attack" << endl;
+				bpHealth -= EnemyTurn(enemy, player, armor);
+			}
 			break;
 		default:
 			cout << "You tried to escape." << endl;
@@ -599,7 +637,6 @@ void ChoiceOneOne()
 		break;
 	case 2:
 		srand(time(NULL));
-		int nProbabilityItem = rand() % 35 + 0;
 		cout << "You approached the torn down carriage." << endl;
 		cout << "You inspect it closer." << endl;
 		cout << "Among the debris, there is one chest that is intact." << endl;
@@ -608,6 +645,7 @@ void ChoiceOneOne()
 		getline(cin, sLooting);
 		if (sLooting == "Yes" || sLooting == "yes" || sLooting == "1" || sLooting == "true" || sLooting == "True")
 		{
+			int nProbabilityItem = rand() % 35 + 0;
 			cout << "Surprisingly, the chest is not locked." << endl;
 			if (nProbabilityItem <= 14)
 			{
